@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import rename from 'gulp-rename';
-import sass from 'gulp-sass';
+//import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
@@ -12,7 +12,6 @@ import babelify from 'babelify';
 import source from 'vinyl-source-stream';
 import streamify from 'gulp-streamify';
 import uglify from 'gulp-uglify';
-
 const server = browserSync.create();
 
 const styles = () => {
@@ -64,7 +63,7 @@ const lint = gulp.parallel(scriptsLint, stylesLint);
 const serve = gulp.series(compile, startServer);
 const watch = gulp.series(lint, gulp.parallel(watchHTML, watchScripts, watchStyles));
 const defaultTasks = gulp.parallel(serve, watch);
-
+const sass = require('gulp-sass')(require('sass'));
 export {
     styles,
     scripts,
